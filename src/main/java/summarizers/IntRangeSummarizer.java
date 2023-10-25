@@ -2,6 +2,7 @@ package summarizers;
 
 import numberrangesummarizer.NumberRangeSummarizer;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 
@@ -12,6 +13,12 @@ import java.util.Collection;
  */
 public class IntRangeSummarizer implements NumberRangeSummarizer {
 
+    private final String inputDelimiter;
+
+    public IntRangeSummarizer() {
+        this.inputDelimiter = ",";
+    }
+
     /**
      * Collect the input.
      * @param input A string list of comma separated numbers.
@@ -19,7 +26,14 @@ public class IntRangeSummarizer implements NumberRangeSummarizer {
      **/
     @Override
     public Collection<Integer> collect(String input) {
-        return null;
+        Collection<Integer> res = new ArrayList<>();
+        if (input.isEmpty())
+            return res;
+        String[] inputArray = input.split(this.inputDelimiter);
+        for (String element : inputArray) {
+            res.add(Integer.parseInt(element));
+        }
+        return res;
     }
 
     /**
