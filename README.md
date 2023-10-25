@@ -9,15 +9,18 @@ The `IntRangeSummarizer` class serves as an implementation of the `NumberRangeSu
 ### Efficiency class
 
 * __collect__
-  * Time efficiency
-    * &Theta;(n)
-  * Memory efficiency
-    * &Theta;(n)
+   * Time efficiency
+      * &Theta;(n)
+
+   * Memory efficiency
+      * &Theta;(n)
+
 * __summarizeCollection__
-  * Time efficiency
-    * &Theta;(n)
-  * Memory efficiency
-    * &Theta;(n)
+   * Time efficiency
+      * &Theta;(n)
+
+   * Memory efficiency
+      * &Theta;(n)
 
 ## NumberSummarizer
 
@@ -28,9 +31,7 @@ The `NumberSummarizer` class acts as a versatile utility, capable of utilizing a
 To utilize the summarization capabilities offered by this project, follow these steps:
 
 1. **Implementation:** Implement the `NumberRangeSummarizer` interface or choose an existing implementation like `IntRangeSummarizer`.
-
 2. **Set Summarizer:** If you opt for a custom implementation, utilize the `setSummarizer` method in the `NumberSummarizer` class to set your custom summarizer.
-
 3. **Summarize Numbers:** Call the `summarize` method, passing a comma-separated list of numbers as a String. The `NumberSummarizer` class will efficiently process the input and provide a summarized version of the numbers in sequential groups.
 
 ### Example Usage
@@ -40,13 +41,13 @@ To utilize the summarization capabilities offered by this project, follow these 
 NumberRangeSummarizer summarizer = new IntRangeSummarizer();
 
 // Set the chosen summarizer
-Summarizer.setSummarizer(summarizer);
+NumberSummarizer.setSummarizer(summarizer); // Optional, default is IntRangeSummarizer()
 
 // Provide a comma-separated list of numbers for summarization
 String inputNumbers = "1,2,3,4,6,7,8,10,11";
 
 // Obtain the summarized result
-String summarizedNumbers = Summarizer.summarize(inputNumbers);
+String summarizedNumbers = NumberSummarizer.summarize(inputNumbers);
 
 System.out.println("Summarized Numbers: " + summarizedNumbers);
 ```
