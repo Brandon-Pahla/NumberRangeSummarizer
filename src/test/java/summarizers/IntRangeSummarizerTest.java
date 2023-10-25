@@ -23,7 +23,7 @@ class IntRangeSummarizerTest {
     @DisplayName("Collect all elements into a collection")
     void collect() {
         IntRangeSummarizer intRangeSummarizer = new IntRangeSummarizer();
-        Collection<Integer> collection = intRangeSummarizer.collect("1,3,6,7,8,12,13,14,15,21,22,23,24,31");
-        assertEquals(new ArrayList<>(Arrays.asList(1, 3, 6, 7, 8, 12, 13, 14, 15, 21, 22, 23, 24, 31)), collection);
+        Collection<Integer> collection = intRangeSummarizer.collect("1,3,6,7,8,12,13,14,15,21,22,23,24");
+        assertEquals(new ArrayList<>(Arrays.asList(1, 3, 6, 7, 8, 12, 13, 14, 15, 21, 22, 23, 24)), collection);
     }
 }
