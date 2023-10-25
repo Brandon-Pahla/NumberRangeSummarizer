@@ -4,6 +4,7 @@ import numberrangesummarizer.NumberRangeSummarizer;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -14,10 +15,15 @@ import java.util.Collection;
 public class IntRangeSummarizer implements NumberRangeSummarizer {
 
     private final String inputDelimiter;
+    private final String outputElementDelimiter;
+    private final String outputGroupDelimiter;
 
     public IntRangeSummarizer() {
         this.inputDelimiter = ",";
+        this.outputGroupDelimiter = "-";
+        this.outputElementDelimiter = ", ";
     }
+
 
     /**
      * Collect the input.
@@ -43,6 +49,32 @@ public class IntRangeSummarizer implements NumberRangeSummarizer {
      * **/
     @Override
     public String summarizeCollection(Collection<Integer> input) {
-        return null;
+        if (input.isEmpty())
+            return "";
+
+        List<Integer> collection = new ArrayList<>(input);
+
+        StringBuilder result = new StringBuilder(String.valueOf(collection.get(0)));
+        int lastElement = collection.get(collection.size()-1);
+        String lastAdded = "";
+
+        for (int i = 1; i < input.size(); i++) {
+            int difference = Math.abs(collection.get(i - 1) - collection.get(i));
+            if (difference == 1) {
+                if (lastAdded.equals(this.outputGroupDelimiter))
+                    continue;
+                result.append(this.outputGroupDelimiter);
+                lastAdded = this.outputGroupDelimiter;
+                continue;
+            }
+            if (lastAdded.equals(this.outputGroupDelimiter))
+                result.append(collection.get(i - 1));
+            result.append(this.outputElementDelimiter).append(collection.get(i));
+            lastAdded = String.valueOf(collection.get(i));
+        }
+        if (lastAdded.equals(this.outputGroupDelimiter))
+            result.append(lastElement);
+
+        return result.toString();
     }
 }
